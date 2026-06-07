@@ -23,9 +23,10 @@ export const AITutor = () => {
     try {
       const response = await geminiService.chat(messages, userMessage);
       setMessages(prev => [...prev, { role: 'model', content: response || "I'm sorry, I couldn't process that." }]);
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
-      setMessages(prev => [...prev, { role: 'model', content: "There was an error connecting to the AI service." }]);
+      const errMsg = error?.message || "There was an error connecting to the AI service.";
+      setMessages(prev => [...prev, { role: 'model', content: `⚠️ **AI Service Error:**\n\n${errMsg}` }]);
     } finally {
       setIsLoading(false);
     }

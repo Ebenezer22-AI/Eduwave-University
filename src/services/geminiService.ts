@@ -2,18 +2,22 @@ import { GoogleGenAI, Type } from "@google/genai";
 import { ChatMessage, DailyProblem } from "../types";
 
 export class GeminiService {
-  private ai: GoogleGenAI;
+  private ai: GoogleGenAI | null = null;
 
-  constructor() {
-    const apiKey = process.env.GEMINI_API_KEY;
-    if (!apiKey) {
-      throw new Error("GEMINI_API_KEY is missing");
+  private getAI(): GoogleGenAI {
+    if (!this.ai) {
+      const apiKey = process.env.GEMINI_API_KEY || (import.meta as any).env?.VITE_GEMINI_API_KEY;
+      if (!apiKey) {
+        throw new Error("GEMINI_API_KEY is missing. Please set GEMINI_API_KEY or VITE_GEMINI_API_KEY in your Vercel Environment Variables.");
+      }
+      this.ai = new GoogleGenAI({ apiKey });
     }
-    this.ai = new GoogleGenAI({ apiKey });
+    return this.ai;
   }
 
   async generateDailyProblem(): Promise<DailyProblem> {
-    const response = await this.ai.models.generateContent({
+    const ai = this.getAI();
+    const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
       contents: "Generate a challenging university-level multiple choice problem for today. It can be from Physics, Computer Science, or Economics.",
       config: {
@@ -40,7 +44,8 @@ export class GeminiService {
   }
 
   async chat(history: ChatMessage[], message: string) {
-    const chat = this.ai.chats.create({
+    const ai = this.getAI();
+    const chat = ai.chats.create({
       model: "gemini-3-flash-preview",
       config: {
         systemInstruction: `You are Eduwave AI, a brilliant and supportive university tutor. 

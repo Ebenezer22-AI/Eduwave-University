@@ -9,16 +9,19 @@ export const ProblemOfTheDay = () => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [errorDesc, setErrorDesc] = useState<string | null>(null);
 
   const fetchProblem = async () => {
     setIsLoading(true);
     setIsSubmitted(false);
     setSelectedOption(null);
+    setErrorDesc(null);
     try {
       const data = await geminiService.generateDailyProblem();
       setProblem(data);
-    } catch (error) {
-      console.error("Failed to fetch problem:", error);
+    } catch (err: any) {
+      console.error("Failed to fetch problem:", err);
+      setErrorDesc(err?.message || "Failed to load problem. Please verify your connection or refresh.");
     } finally {
       setIsLoading(false);
     }
@@ -49,17 +52,26 @@ export const ProblemOfTheDay = () => {
     );
   }
 
-  if (!problem) {
+  if (errorDesc || !problem) {
     return (
-      <div className="flex flex-col items-center justify-center h-[60vh] space-y-4">
-        <XCircle size={48} className="text-rose-500" />
-        <p className="text-zinc-500 font-medium">Failed to load problem. Please try again.</p>
-        <button 
-          onClick={fetchProblem}
-          className="px-6 py-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-colors"
-        >
-          Retry
-        </button>
+      <div className="flex flex-col items-center justify-center max-w-lg mx-auto h-[60vh] text-center p-6 space-y-6">
+        <div className="w-16 h-16 bg-rose-50 text-rose-500 rounded-full flex items-center justify-center">
+          <XCircle size={36} />
+        </div>
+        <div className="space-y-2">
+          <h3 className="text-lg font-bold text-zinc-900">Failed to Load Daily Problem</h3>
+          <p className="text-sm text-zinc-500 leading-relaxed">
+            {errorDesc || "An unexpected error occurred while generating today's challenge."}
+          </p>
+        </div>
+        <div className="flex flex-col sm:flex-row gap-3 w-full justify-center">
+          <button 
+            onClick={fetchProblem}
+            className="px-6 py-2.5 bg-indigo-600 text-white font-medium rounded-xl hover:bg-indigo-700 transition-colors text-sm shadow-sm"
+          >
+            Try Again
+          </button>
+        </div>
       </div>
     );
   }
