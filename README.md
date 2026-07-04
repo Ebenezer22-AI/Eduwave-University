@@ -4,13 +4,11 @@
 
 </div>
 
-# Run and deploy your AI Studio app
+# Description of the app
+This app is called Eduwave-University. It is an educational app that helps university students study on their own with the help of AI tutors. It is an amazing app in the eudcational sector.
 
-This contains everything you need to run your app locally.
-
-View your app in AI Studio: https://ai.studio/apps/61bcd4fe-8a3a-41a2-82ec-bc9054f262ab
-
-## Run Locally
+## Features of the app
+The app has features like Dashboard, AI Tutors, Profile, Daily problems, Setting, Quiz and Schedule
 
 **Prerequisites:**  Node.js
 
