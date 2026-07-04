@@ -12,11 +12,7 @@ This app is called Eduwave-University. It is an educational app that helps unive
 
 ## Features of the app
 The app has features like: 
-Dashboard:Courses and Planner
-AI Tutors and Profile
-Daily problems and Setting
-Quiz: Both Offline and online
-Schedule
+Dashboard:Courses and Planner, AI Tutors and Profile, Daily problems and Setting, Quiz: Both Offline and online, and Schedule
 
 
 **Prerequisites:**  Node.js
