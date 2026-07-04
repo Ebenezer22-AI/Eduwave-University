@@ -7,6 +7,9 @@
 # Description of the app
 This app is called Eduwave-University. It is an educational app that helps university students study on their own with the help of AI tutors. It is an amazing app in the eudcational sector.
 
+# Link to the app
+ https://eduwave-university-rgve.vercel.app/
+
 ## Features of the app
 The app has features like Dashboard, AI Tutors, Profile, Daily problems, Setting, Quiz and Schedule
 
