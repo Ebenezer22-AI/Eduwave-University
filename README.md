@@ -14,10 +14,10 @@ This app is called Eduwave-University. It is an educational app that helps unive
 The app has features like: Dashboard, AI Tutors, Profile, Daily problems, Setting, Quizzes,Schedule
 
 #Further Explanation of the features
-Dashboard and Schedule:Helps in monitoring your attendance and courses
-AI Turors:It is empowered by gemini to help one in studying
-Profile:Helps to manage your personal information and academic records.
-Daily problems and quizzes:Tests one capabilities through questions
+Dashboard and Schedule:Helps in monitoring your attendance and courses,
+AI Tutors:It is empowered by gemini to help one in studying,
+Profile:Helps to manage your personal information and academic records,
+Daily problems and quizzes:Tests one capabilities through questions.
 
 
 
