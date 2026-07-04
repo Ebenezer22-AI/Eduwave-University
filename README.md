@@ -15,7 +15,9 @@ The app has features like:
 Dashboard:Courses and Planner
 AI Tutors and Profile
 Daily problems and Setting
-Quiz and Schedule
+Quiz: Both Offline and online
+Schedule
+
 
 **Prerequisites:**  Node.js
 
