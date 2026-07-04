@@ -11,7 +11,11 @@ This app is called Eduwave-University. It is an educational app that helps unive
  https://eduwave-university-rgve.vercel.app/
 
 ## Features of the app
-The app has features like Dashboard, AI Tutors, Profile, Daily problems, Setting, Quiz and Schedule
+The app has features like: 
+Dashboard:Courses and Planner
+AI Tutors and Profile
+Daily problems and Setting
+Quiz and Schedule
 
 **Prerequisites:**  Node.js
 
